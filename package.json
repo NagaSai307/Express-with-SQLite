@@ -1,0 +1,30 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "swagger-autogen": "node swagger.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "5.0.1",
+    "express": "^4.18.2",
+    "express-winston": "^4.2.0",
+    "jsonwebtoken": "^9.0.0",
+    "nodemailer": "^6.9.3",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.1",
+    "sqlite": "^4.0.19",
+    "sqlite3": "^5.0.2",
+    "swagger-autogen": "^2.23.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "winston": "^3.9.0",
+    "winston-sqlite3": "^1.1.1"
+  }
+}
