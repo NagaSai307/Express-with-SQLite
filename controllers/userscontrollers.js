@@ -64,7 +64,7 @@ const userLoginApi = async (request, response) => {
         const payload = {
           username: username,
         };
-        const jwtToken = jwt.sign(payload, process.env.SecreteKey);
+        const jwtToken = jwt.sign(payload, process.env.Auth_SecreteKey);
         response.send({ jwtToken });
       } else {
         response.status(400);
@@ -105,16 +105,16 @@ const forgotAPi = async (request, response) => {
       const random = Math.random().toString(36).slice(-8);
 
       const transporter = nodemailer.createTransport({
-        host: process.env.smtp_host,
+        host: process.env.smtp_host_url,
         port: 587,
         secure: false,
         auth: {
-          user: process.env.smtp_user,
-          pass: process.env.smtp_password,
+          user: process.env.smtp_user_key,
+          pass: process.env.smtp_password_key,
         },
       });
       var options = {
-        from: process.env.smtp_user,
+        from: process.env.smtp_user_key,
         to: `"${username}"`,
         subject: "TEST MAIL",
         text: `Your OTP Was -- ${random}`,
