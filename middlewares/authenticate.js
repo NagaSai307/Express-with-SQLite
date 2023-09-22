@@ -11,7 +11,7 @@ const authenticate = (request, response, next) => {
         response.status(401);
         response.send("invalid user");
       } else {
-        jwt.verify(jwtTokens, process.env.Auth_SecreteKey, async (error, payload) => {
+        jwt.verify(jwtTokens, process.env.SecreteKey, async (error, payload) => {
           if (error) {
             response.status(401);
             response.send("invalid user to access");
