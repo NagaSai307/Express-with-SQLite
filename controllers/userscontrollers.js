@@ -2,6 +2,7 @@ const { getDB } = require("../database/datastore");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+require("dotenv").config()
 
 // User Register API
 const userRegisterApi = async (request, response) => {
@@ -63,7 +64,7 @@ const userLoginApi = async (request, response) => {
         const payload = {
           username: username,
         };
-        const jwtToken = jwt.sign(payload, "bjbjbjsbjb");
+        const jwtToken = jwt.sign(payload, process.env.SecreteKey);
         response.send({ jwtToken });
       } else {
         response.status(400);
@@ -104,16 +105,16 @@ const forgotAPi = async (request, response) => {
       const random = Math.random().toString(36).slice(-8);
 
       const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
+        host: process.env.smtp_host,
         port: 587,
         secure: false,
         auth: {
-          user: "nagasaichalla307@gmail.com",
-          pass: "mtvseruxdjbosfkm",
+          user: process.env.smtp_user,
+          pass: process.env.smtp_password,
         },
       });
       var options = {
-        from: "nagasaichalla307@gmail.com",
+        from: process.env.smtp_user,
         to: `"${username}"`,
         subject: "TEST MAIL",
         text: `Your OTP Was -- ${random}`,
